@@ -1,10 +1,6 @@
 import { transactions } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-
-const $N = (n: number) => n.toLocaleString();
-
-const sColor = (s: string) =>
-  s === "Completed" ? "var(--jade)" : s === "Failed" ? "#dc2626" : "#D4891A"; // Pending
+import { $N, statusColor } from "@/lib/format";
 
 export default function TreasuryTransactions() {
   return (
@@ -210,7 +206,7 @@ export default function TreasuryTransactions() {
                       fontSize: 8,
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
-                      color: sColor(t.status),
+                      color: statusColor(t.status),
                     }}
                   >
                     <span
@@ -218,7 +214,7 @@ export default function TreasuryTransactions() {
                         width: 4,
                         height: 4,
                         borderRadius: "50%",
-                        background: sColor(t.status),
+                        background: statusColor(t.status),
                         flexShrink: 0,
                       }}
                     />
@@ -318,10 +314,10 @@ export default function TreasuryTransactions() {
                       fontSize: 9,
                       letterSpacing: "0.14em",
                       textTransform: "uppercase",
-                      color: sColor(t.status),
+                      color: statusColor(t.status),
                       padding: "4px 10px",
                       borderRadius: 999,
-                      border: `1px solid ${sColor(t.status)}`,
+                      border: `1px solid ${statusColor(t.status)}`,
                     }}
                   >
                     <span
@@ -329,7 +325,7 @@ export default function TreasuryTransactions() {
                         width: 5,
                         height: 5,
                         borderRadius: "50%",
-                        background: sColor(t.status),
+                        background: statusColor(t.status),
                         flexShrink: 0,
                       }}
                     />

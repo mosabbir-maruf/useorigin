@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 import { faqs } from "@/data/mockData";
 import { Plus } from "lucide-react";
 
@@ -7,26 +8,10 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section
+    <Section
       id="faq"
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      gradient="radial-gradient(40% 55% at 0% 0%, rgba(255,60,0,0.10), transparent 70%)"
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(40% 55% at 0% 0%, rgba(255,60,0,0.10), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
         <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 md:gap-20">
           <Parallax offset={[40, -40]}>
             <div
@@ -150,7 +135,6 @@ export default function FAQ() {
             })}
           </Parallax>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

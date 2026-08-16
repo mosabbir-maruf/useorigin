@@ -1,6 +1,6 @@
 import { proposals, calculateFunding } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-import { $N } from "./utils";
+import { $N } from "@/lib/format";
 
 export default function Ticker() {
   return (

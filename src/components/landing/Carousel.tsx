@@ -1,18 +1,23 @@
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   proposals,
   calculateFunding,
   calculateVotes,
   getCreator,
 } from "@/data/mockData";
-import { $N, statusColor } from "./utils";
+import { $N, landingStatusColor } from "@/lib/format";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 
 export default function Carousel({ open }: { open: (id: string) => void }) {
-  const items = proposals.filter(
-    (p) => p.status === "Active Voting" || p.status === "Approved",
+  const items = useMemo(
+    () =>
+      proposals.filter(
+        (p) => p.status === "Active Voting" || p.status === "Approved",
+      ),
+    [],
   );
   const [ref, api] = useEmblaCarousel({ align: "start", dragFree: true });
   const [canP, setCanP] = useState(false);
@@ -32,25 +37,10 @@ export default function Carousel({ open }: { open: (id: string) => void }) {
   }, [api, sync]);
 
   return (
-    <section
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+    <Section
+      gradient="radial-gradient(40% 70% at 0% 100%, rgba(255,60,0,0.10), transparent 70%)"
+      containerClassName="max-w-[1440px] mx-auto py-12 md:py-24 px-4 sm:px-6 md:px-10 overflow-hidden relative"
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(40% 70% at 0% 100%, rgba(255,60,0,0.10), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto py-12 md:py-24 px-4 sm:px-6 md:px-10 overflow-hidden relative">
         <Parallax offset={[40, -40]}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-8 lg:mb-16">
             <div className="md:w-7/12">
@@ -178,7 +168,7 @@ export default function Carousel({ open }: { open: (id: string) => void }) {
                           <div className="flex items-center gap-2">
                             <span
                               className="w-1.5 h-1.5 rounded-full"
-                              style={{ background: statusColor(p.status) }}
+                              style={{ background: landingStatusColor(p.status) }}
                             />
                             <span
                               className="f-mono"
@@ -355,7 +345,6 @@ export default function Carousel({ open }: { open: (id: string) => void }) {
             </div>
           </div>
         </Parallax>
-      </div>
-    </section>
+    </Section>
   );
 }

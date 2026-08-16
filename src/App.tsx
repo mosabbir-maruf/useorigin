@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import {
   Routes,
   Route,
@@ -7,32 +7,57 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { useLenis } from "lenis/react";
 import Landing from "@/components/Landing";
-import Explore from "@/components/Explore";
-import Governance from "@/components/Governance";
-import ProposalDetails from "@/components/ProposalDetails";
-import Treasury from "@/components/Treasury";
-import ConnectWallet from "@/components/ConnectWallet";
-import SubmitProject from "@/components/SubmitProject";
-import Contact from "@/components/Contact";
-import NotFound from "@/components/NotFound";
+
+const Explore = lazy(() => import("@/components/Explore"));
+const Governance = lazy(() => import("@/components/Governance"));
+const ProposalDetails = lazy(() => import("@/components/ProposalDetails"));
+const Treasury = lazy(() => import("@/components/Treasury"));
+const ConnectWallet = lazy(() => import("@/components/ConnectWallet"));
+const SubmitProject = lazy(() => import("@/components/SubmitProject"));
+const Contact = lazy(() => import("@/components/Contact"));
+const NotFound = lazy(() => import("@/components/NotFound"));
+
+function RouteFallback() {
+  return (
+    <div
+      style={{
+        background: "var(--cream)",
+        color: "var(--dim)",
+        minHeight: "60vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div className="f-mono" style={{ fontSize: 10, letterSpacing: "0.2em" }}>
+        Loading…
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const lenis = useLenis();
 
   // Scroll to top or hash on route change
   useEffect(() => {
     if (location.hash) {
-      setTimeout(() => {
-        const el = document.getElementById(location.hash.substring(1));
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 0);
-    } else {
-      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      const id = location.hash.substring(1);
+      const t = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        lenis?.resize();
+        lenis?.scrollTo(el, { offset: 0, duration: 1.2 });
+      }, 100);
+      return () => clearTimeout(t);
     }
-  }, [location.pathname, location.hash]);
+    lenis?.scrollTo(0, { immediate: true });
+  }, [location.pathname, location.hash, lenis]);
 
   const go = (path: string) => {
     navigate(path);
@@ -79,6 +104,9 @@ export default function App() {
               <img
                 src="/logo.png"
                 alt="Origin Logo"
+                width={40}
+                height={40}
+                decoding="async"
                 className="w-8 h-8 md:w-10 md:h-10 object-contain -mr-2 translate-y-px"
               />
               <span className="text-white font-bold text-xl md:text-2xl tracking-tighter font-syne leading-none pt-1">
@@ -285,17 +313,19 @@ export default function App() {
       </header>
 
       <main>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/proposal/:id" element={<ProposalDetails />} />
-          <Route path="/governance" element={<Governance />} />
-          <Route path="/treasury" element={<Treasury />} />
-          <Route path="/connect" element={<ConnectWallet />} />
-          <Route path="/submit" element={<SubmitProject />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/proposal/:id" element={<ProposalDetails />} />
+            <Route path="/governance" element={<Governance />} />
+            <Route path="/treasury" element={<Treasury />} />
+            <Route path="/connect" element={<ConnectWallet />} />
+            <Route path="/submit" element={<SubmitProject />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
     </div>
   );

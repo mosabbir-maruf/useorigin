@@ -22,28 +22,9 @@ import {
 import { Parallax } from "@/components/ui/parallax";
 import Footer from "./landing/Footer";
 import SEO from "@/components/SEO";
+import { $N, statusColor } from "@/lib/format";
 
 type Vote = "Yes" | "No" | "Abstain" | null;
-
-const $N = (n: number) => n.toLocaleString();
-
-const sColor = (s: string) =>
-  s === "Active" ||
-  s === "Active Voting" ||
-  s === "Voting" ||
-  s === "In Progress" ||
-  s === "Under Review"
-    ? "#D4891A"
-    : s === "Passed" ||
-        s === "Executed" ||
-        s === "Approved" ||
-        s === "Released" ||
-        s === "Funded" ||
-        s === "Completed"
-      ? "var(--jade)"
-      : s === "Upcoming" || s === "Draft" || s === "Pending Review"
-        ? "#0ea5e9"
-        : "#c0392b";
 
 const milestoneIcon = (s: string) => {
   if (s === "Completed" || s === "Released") return CheckCircle2;
@@ -140,8 +121,8 @@ export default function ProposalDetails() {
                 textTransform: "uppercase",
                 padding: "6px 14px",
                 borderRadius: 999,
-                border: `1px solid ${sColor(p.status)}`,
-                color: sColor(p.status),
+                border: `1px solid ${statusColor(p.status)}`,
+                color: statusColor(p.status),
                 background: "rgba(255,255,255,0.03)",
               }}
             >
@@ -150,7 +131,7 @@ export default function ProposalDetails() {
                   width: 5,
                   height: 5,
                   borderRadius: "50%",
-                  background: sColor(p.status),
+                  background: statusColor(p.status),
                 }}
               />
               {p.status}
@@ -208,6 +189,8 @@ export default function ProposalDetails() {
                 <img
                   src={avatarUrl(creator.id)}
                   alt={creator.name}
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: 36,
                     height: 36,
@@ -823,8 +806,8 @@ export default function ProposalDetails() {
                                       textTransform: "uppercase",
                                       padding: "4px 10px",
                                       borderRadius: 999,
-                                      border: `1px solid ${sColor(m.status)}`,
-                                      color: sColor(m.status),
+                                      border: `1px solid ${statusColor(m.status)}`,
+                                      color: statusColor(m.status),
                                     }}
                                   >
                                     <span
@@ -832,7 +815,7 @@ export default function ProposalDetails() {
                                         width: 4,
                                         height: 4,
                                         borderRadius: "50%",
-                                        background: sColor(m.status),
+                                        background: statusColor(m.status),
                                       }}
                                     />
                                     {m.status}
@@ -1462,6 +1445,8 @@ export default function ProposalDetails() {
                   <img
                     src={avatarUrl(creator.id)}
                     alt={creator.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: 48,
                       height: 48,

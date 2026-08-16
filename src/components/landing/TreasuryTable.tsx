@@ -1,18 +1,24 @@
+import { useMemo } from "react";
 import { treasuryStats, proposals, calculateFunding } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-import { $M } from "./utils";
+import Section from "@/components/ui/section";
+import { $M } from "@/lib/format";
 
 export default function TreasuryTable() {
   // Dynamically compute treasury allocation by category based on released funds
-  const allocationByCategory = proposals.reduce(
-    (acc, p) => {
-      const released = calculateFunding(p).released;
-      if (released > 0) {
-        acc[p.category] = (acc[p.category] || 0) + released;
-      }
-      return acc;
-    },
-    {} as Record<string, number>,
+  const allocationByCategory = useMemo(
+    () =>
+      proposals.reduce(
+        (acc, p) => {
+          const released = calculateFunding(p).released;
+          if (released > 0) {
+            acc[p.category] = (acc[p.category] || 0) + released;
+          }
+          return acc;
+        },
+        {} as Record<string, number>,
+      ),
+    [],
   );
 
   const totalAllocated = Object.values(allocationByCategory).reduce(
@@ -30,25 +36,7 @@ export default function TreasuryTable() {
     .sort((a, b) => b.amount - a.amount);
 
   return (
-    <section
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(45% 60% at 100% 100%, rgba(255,60,0,0.10), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
+    <Section gradient="radial-gradient(45% 60% at 100% 100%, rgba(255,60,0,0.10), transparent 70%)">
         <div className="flex flex-col gap-6 lg:gap-14 mb-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12">
             <div className="md:w-7/12">
@@ -321,7 +309,6 @@ export default function TreasuryTable() {
             </div>
           </div>
         </Parallax>
-      </div>
-    </section>
+    </Section>
   );
 }

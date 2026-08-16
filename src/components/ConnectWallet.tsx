@@ -17,6 +17,8 @@ const WALLETS = [
         alt="MetaMask"
         width="24"
         height="24"
+        loading="lazy"
+        decoding="async"
         style={{ display: "block" }}
       />
     ),
@@ -30,6 +32,8 @@ const WALLETS = [
         alt="WalletConnect"
         width="24"
         height="24"
+        loading="lazy"
+        decoding="async"
         style={{ display: "block" }}
       />
     ),

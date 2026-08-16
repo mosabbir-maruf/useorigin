@@ -11,8 +11,7 @@ import { treasuryActivityData } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-
-const $N = (n: number) => n.toLocaleString();
+import { $N } from "@/lib/format";
 
 export default function TreasuryActivity() {
   const chartRef = useRef<HTMLDivElement>(null);

@@ -5,46 +5,52 @@ import {
   getActiveMilestones,
 } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-
-const $N = (n: number) => n.toLocaleString();
+import { $N } from "@/lib/format";
+import { useMemo } from "react";
 
 export default function FundingCommitments() {
-  const fundingCommitmentsData = proposals
-    .filter((p) => ["Approved", "Funded", "Completed"].includes(p.status))
-    .map((p) => {
-      const creator = getCreator(p.creatorId);
-      const funding = calculateFunding(p);
+  const fundingCommitmentsData = useMemo(
+    () =>
+      proposals
+        .filter((p) => ["Approved", "Funded", "Completed"].includes(p.status))
+        .map((p) => {
+          const creator = getCreator(p.creatorId);
+          const funding = calculateFunding(p);
 
-      const activeMilestones = p.milestones.filter(
-        (m) => !["Released", "Completed"].includes(m.status),
-      );
-      const currentMilestone =
-        activeMilestones.length > 0
-          ? activeMilestones[0].title
-          : "All Completed";
+          const activeMilestones = p.milestones.filter(
+            (m) => !["Released", "Completed"].includes(m.status),
+          );
+          const currentMilestone =
+            activeMilestones.length > 0
+              ? activeMilestones[0].title
+              : "All Completed";
 
-      return {
-        id: p.id,
-        project: p.title,
-        status: p.status,
-        creator: creator.name,
-        approved: funding.requested,
-        released: funding.released,
-        remaining: funding.remaining,
-        milestone: currentMilestone,
-      };
-    });
+          return {
+            id: p.id,
+            project: p.title,
+            status: p.status,
+            creator: creator.name,
+            approved: funding.requested,
+            released: funding.released,
+            remaining: funding.remaining,
+            milestone: currentMilestone,
+          };
+        }),
+    [],
+  );
 
-  const activeMilestones = getActiveMilestones();
-
-  const milestoneList = activeMilestones.map(({ proposal, milestone }) => ({
-    id: milestone.id,
-    project: proposal.title,
-    title: milestone.title,
-    amount: milestone.amount,
-    status: milestone.status,
-    expected: milestone.expected,
-  }));
+  const milestoneList = useMemo(
+    () =>
+      getActiveMilestones().map(({ proposal, milestone }) => ({
+        id: milestone.id,
+        project: proposal.title,
+        title: milestone.title,
+        amount: milestone.amount,
+        status: milestone.status,
+        expected: milestone.expected,
+      })),
+    [],
+  );
 
   const totalLocked = milestoneList.reduce((sum, m) => sum + m.amount, 0);
   const pendingReview = milestoneList

@@ -7,31 +7,13 @@ import {
   governanceStats,
 } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 import TabChip from "@/components/ui/TabChip";
+import { $N, statusColor, statusTone } from "@/lib/format";
 
 interface ProposalsProps {
   open: (id: string) => void;
 }
-
-const $N = (n: number) => n.toLocaleString();
-
-const sColor = (s: string) =>
-  s === "Active Voting"
-    ? "#D4891A"
-    : ["Approved", "Funded", "Completed"].includes(s)
-      ? "var(--jade)"
-      : s === "Pending Review"
-        ? "#0ea5e9"
-        : "#c0392b";
-
-const proposalTabTone = (tab: string) =>
-  tab === "Active Voting"
-    ? "warning"
-    : tab === "Pending Review"
-      ? "info"
-      : tab === "Rejected"
-        ? "danger"
-        : "success";
 
 export default function Proposals({ open }: ProposalsProps) {
   const [activeTab, setActiveTab] = useState<
@@ -45,25 +27,7 @@ export default function Proposals({ open }: ProposalsProps) {
   });
 
   return (
-    <section
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(45% 55% at 50% 0%, rgba(255,60,0,0.08), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
+    <Section gradient="radial-gradient(45% 55% at 50% 0%, rgba(255,60,0,0.08), transparent 70%)">
         <div>
           <Parallax
             offset={[40, -40]}
@@ -137,7 +101,7 @@ export default function Proposals({ open }: ProposalsProps) {
                   key={tab}
                   active={activeTab === tab}
                   onClick={() => setActiveTab(tab)}
-                  activeTone={proposalTabTone(tab)}
+                  activeTone={statusTone(tab)}
                 >
                   {tab}
                 </TabChip>
@@ -486,7 +450,7 @@ export default function Proposals({ open }: ProposalsProps) {
                             fontSize: 8,
                             letterSpacing: "0.12em",
                             textTransform: "uppercase",
-                            color: sColor(p.status),
+                            color: statusColor(p.status),
                           }}
                         >
                           <span
@@ -494,7 +458,7 @@ export default function Proposals({ open }: ProposalsProps) {
                               width: 4,
                               height: 4,
                               borderRadius: "50%",
-                              background: sColor(p.status),
+                              background: statusColor(p.status),
                               flexShrink: 0,
                             }}
                           />
@@ -647,10 +611,10 @@ export default function Proposals({ open }: ProposalsProps) {
                             fontSize: 9,
                             letterSpacing: "0.14em",
                             textTransform: "uppercase",
-                            color: sColor(p.status),
+                            color: statusColor(p.status),
                             padding: "5px 12px",
                             borderRadius: 999,
-                            border: `1px solid ${sColor(p.status)}`,
+                            border: `1px solid ${statusColor(p.status)}`,
                           }}
                         >
                           <span
@@ -658,7 +622,7 @@ export default function Proposals({ open }: ProposalsProps) {
                               width: 5,
                               height: 5,
                               borderRadius: "50%",
-                              background: sColor(p.status),
+                              background: statusColor(p.status),
                               flexShrink: 0,
                             }}
                           />
@@ -698,7 +662,6 @@ export default function Proposals({ open }: ProposalsProps) {
             )}
           </Parallax>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

@@ -73,6 +73,8 @@ export default function NotFound() {
           <img
             src="/logo.png"
             alt="Origin Logo"
+            loading="lazy"
+            decoding="async"
             className="relative z-10 animate-[spin_20s_linear_infinite]"
             style={{
               width: "80%",

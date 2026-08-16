@@ -1,14 +1,6 @@
 import { userVotingHistory } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-
-const $N = (n: number) => n.toLocaleString();
-
-const sColor = (s: string) =>
-  s === "Yes" || s === "Passed" || s === "Executed"
-    ? "var(--jade)"
-    : s === "No" || s === "Defeated"
-      ? "#dc2626"
-      : "var(--dim)";
+import { $N, statusColor } from "@/lib/format";
 
 export default function VotingHistory() {
   return (
@@ -182,7 +174,7 @@ export default function VotingHistory() {
                   </span>
                   <span
                     style={{
-                      color: sColor(v.vote),
+                      color: statusColor(v.vote),
                       textTransform: "uppercase",
                     }}
                   >
@@ -239,7 +231,7 @@ export default function VotingHistory() {
                       fontSize: 8,
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
-                      color: sColor(v.outcome),
+                      color: statusColor(v.outcome),
                     }}
                   >
                     <span
@@ -247,7 +239,7 @@ export default function VotingHistory() {
                         width: 4,
                         height: 4,
                         borderRadius: "50%",
-                        background: sColor(v.outcome),
+                        background: statusColor(v.outcome),
                         flexShrink: 0,
                       }}
                     />
@@ -292,7 +284,7 @@ export default function VotingHistory() {
                   className="f-mono"
                   style={{
                     fontSize: 12,
-                    color: sColor(v.vote),
+                    color: statusColor(v.vote),
                     textTransform: "uppercase",
                     fontWeight: 500,
                   }}
@@ -320,10 +312,10 @@ export default function VotingHistory() {
                     fontSize: 9,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
-                    color: sColor(v.outcome),
+                    color: statusColor(v.outcome),
                     padding: "5px 12px",
                     borderRadius: 999,
-                    border: `1px solid ${sColor(v.outcome)}`,
+                    border: `1px solid ${statusColor(v.outcome)}`,
                     justifySelf: "start",
                     width: "fit-content",
                   }}
@@ -333,7 +325,7 @@ export default function VotingHistory() {
                       width: 5,
                       height: 5,
                       borderRadius: "50%",
-                      background: sColor(v.outcome),
+                      background: statusColor(v.outcome),
                       flexShrink: 0,
                     }}
                   />

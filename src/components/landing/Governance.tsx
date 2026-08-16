@@ -7,7 +7,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { Parallax } from "@/components/ui/parallax";
-import { statusColor } from "./utils";
+import Section from "@/components/ui/section";
+import { landingStatusColor } from "@/lib/format";
 
 const stats = [
   { icon: Percent, v: "60%", l: "Approval threshold" },
@@ -42,25 +43,7 @@ const activity = [
 
 export default function Governance() {
   return (
-    <section
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(50% 60% at 100% 0%, rgba(255,60,0,0.14), transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
+    <Section gradient="radial-gradient(50% 60% at 100% 0%, rgba(255,60,0,0.14), transparent 65%)">
         <Parallax
           offset={[40, -40]}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-8 lg:mb-16"
@@ -221,8 +204,8 @@ export default function Governance() {
                             letterSpacing: "0.12em",
                             padding: "4px 8px",
                             borderRadius: 999,
-                            border: `1px solid ${statusColor(e.s)}`,
-                            color: statusColor(e.s),
+                            border: `1px solid ${landingStatusColor(e.s)}`,
+                            color: landingStatusColor(e.s),
                           }}
                         >
                           <span
@@ -230,7 +213,7 @@ export default function Governance() {
                               width: 4,
                               height: 4,
                               borderRadius: "50%",
-                              background: statusColor(e.s),
+                              background: landingStatusColor(e.s),
                             }}
                           />
                           {e.s}
@@ -334,8 +317,8 @@ export default function Governance() {
                             letterSpacing: "0.12em",
                             padding: "5px 10px",
                             borderRadius: 999,
-                            border: `1px solid ${statusColor(e.s)}`,
-                            color: statusColor(e.s),
+                            border: `1px solid ${landingStatusColor(e.s)}`,
+                            color: landingStatusColor(e.s),
                           }}
                         >
                           <span
@@ -343,7 +326,7 @@ export default function Governance() {
                               width: 5,
                               height: 5,
                               borderRadius: "50%",
-                              background: statusColor(e.s),
+                              background: landingStatusColor(e.s),
                             }}
                           />
                           {e.s}
@@ -404,7 +387,6 @@ export default function Governance() {
             ))}
           </div>
         </Parallax>
-      </div>
-    </section>
+    </Section>
   );
 }

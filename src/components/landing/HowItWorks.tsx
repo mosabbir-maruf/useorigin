@@ -1,5 +1,6 @@
 import { FilePlus2, Vote, CircleDollarSign } from "lucide-react";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
@@ -196,27 +197,10 @@ export default function HowItWorks() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section
+    <Section
       id="how-it-works"
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      gradient="radial-gradient(45% 55% at 0% 0%, rgba(255,60,0,0.10), transparent 70%)"
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(45% 55% at 0% 0%, rgba(255,60,0,0.10), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
         {/* Header */}
         <Parallax
           offset={[30, -30]}
@@ -307,7 +291,6 @@ export default function HowItWorks() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

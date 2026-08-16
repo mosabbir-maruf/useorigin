@@ -1,7 +1,6 @@
 import { treasuryStats, treasuryAssets } from "@/data/mockData";
 import { Parallax } from "@/components/ui/parallax";
-
-const $N = (n: number) => n.toLocaleString();
+import { $N } from "@/lib/format";
 
 export default function TreasuryOverview() {
   const totalAllTime = treasuryStats.totalTreasury + treasuryStats.distributed;

@@ -14,6 +14,7 @@ import { ArrowUpRight, Search } from "lucide-react";
 import { Parallax } from "@/components/ui/parallax";
 import TabChip from "@/components/ui/TabChip";
 import Footer from "./landing/Footer";
+import { $N, listStatusColor, statusTone } from "@/lib/format";
 
 const CATS = [
   "All",
@@ -28,17 +29,6 @@ const CATS = [
   "Gaming",
 ];
 const STATS = ["All", "Active Voting", "Approved", "Funded", "Completed"];
-const $N = (n: number) => n.toLocaleString();
-
-const sColor = (s: string) =>
-  ["Active Voting"].includes(s)
-    ? "#D4891A"
-    : ["Approved", "Funded", "Completed"].includes(s)
-      ? "var(--jade)"
-      : "var(--dim)";
-
-const statusTone = (s: string) =>
-  s === "Active Voting" ? "warning" : s === "All" ? "neutral" : "success";
 
 export default function Explore() {
   const navigate = useNavigate();
@@ -470,7 +460,7 @@ export default function Explore() {
                                   width: 5,
                                   height: 5,
                                   borderRadius: "50%",
-                                  background: sColor(p.status),
+                                  background: listStatusColor(p.status),
                                 }}
                               />
                               <span
@@ -542,6 +532,8 @@ export default function Explore() {
                             <img
                               src={avatarUrl(creator.id)}
                               alt={creator.name}
+                              loading="lazy"
+                              decoding="async"
                               style={{
                                 width: 28,
                                 height: 28,
@@ -822,7 +814,7 @@ export default function Explore() {
                             width: 5,
                             height: 5,
                             borderRadius: "50%",
-                            background: sColor(p.status),
+                            background: listStatusColor(p.status),
                             flexShrink: 0,
                           }}
                         />

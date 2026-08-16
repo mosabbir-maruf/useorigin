@@ -1,30 +1,18 @@
 import { ArrowRight } from "lucide-react";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 import { useNavigate } from "react-router-dom";
 
 export default function CTA() {
   const navigate = useNavigate();
 
   return (
-    <section
-      style={{
-        background: "var(--pit)",
-        color: "var(--pit-text)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+    <Section
+      background="var(--pit)"
+      color="var(--pit-text)"
+      gradient="radial-gradient(60% 90% at 85% 100%, rgba(255,60,0,0.28), transparent 70%), radial-gradient(40% 60% at 10% 0%, rgba(255,60,0,0.12), transparent 70%)"
+      containerClassName="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-24 md:py-32 relative"
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(60% 90% at 85% 100%, rgba(255,60,0,0.28), transparent 70%), radial-gradient(40% 60% at 10% 0%, rgba(255,60,0,0.12), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-24 md:py-32 relative">
         <Parallax
           offset={[60, -60]}
           className="flex flex-col items-center text-center max-w-[600px] mx-auto"
@@ -172,7 +160,6 @@ export default function CTA() {
             ))}
           </div>
         </Parallax>
-      </div>
-    </section>
+    </Section>
   );
 }

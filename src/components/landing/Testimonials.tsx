@@ -1,47 +1,35 @@
+import { useMemo } from "react";
 import { testimonials, getCreator, avatarUrl } from "@/data/mockData";
 import {
   TestimonialsColumn,
   type TestimonialItem,
 } from "@/components/ui/testimonials-columns-1";
 import { Parallax } from "@/components/ui/parallax";
+import Section from "@/components/ui/section";
 
 export default function Testimonials() {
-  const items: TestimonialItem[] = testimonials.map((t) => {
-    const creator = getCreator(t.creatorId);
-    return {
-      text: t.quote,
-      avatar: avatarUrl(creator.id),
-      initials: creator.initials,
-      name: creator.name,
-      role: t.role,
-      metric: t.metric,
-    };
-  });
+  const items: TestimonialItem[] = useMemo(
+    () =>
+      testimonials.map((t) => {
+        const creator = getCreator(t.creatorId);
+        return {
+          text: t.quote,
+          avatar: avatarUrl(creator.id),
+          initials: creator.initials,
+          name: creator.name,
+          role: t.role,
+          metric: t.metric,
+        };
+      }),
+    [],
+  );
 
   const firstColumn = items.slice(0, 3);
   const secondColumn = items.slice(3, 6);
   const thirdColumn = items.length > 6 ? items.slice(6, 9) : items.slice(0, 3);
 
   return (
-    <section
-      style={{
-        background: "var(--cream)",
-        borderTop: "1px solid var(--rule)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(45% 55% at 50% 100%, rgba(255,60,0,0.10), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-24 relative">
+    <Section gradient="radial-gradient(45% 55% at 50% 100%, rgba(255,60,0,0.10), transparent 70%)">
         <Parallax
           offset={[40, -40]}
           className="flex flex-col items-center text-center max-w-[560px] mx-auto mb-8"
@@ -121,7 +109,6 @@ export default function Testimonials() {
             className="hidden lg:block"
           />
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }
