@@ -201,96 +201,96 @@ export default function HowItWorks() {
       id="how-it-works"
       gradient="radial-gradient(45% 55% at 0% 0%, rgba(255,60,0,0.10), transparent 70%)"
     >
-        {/* Header */}
-        <Parallax
-          offset={[30, -30]}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 lg:mb-24"
-        >
-          <div className="md:w-7/12">
-            <div
-              className="f-mono inline-flex items-center gap-2"
+      {/* Header */}
+      <Parallax
+        offset={[30, -30]}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 lg:mb-24"
+      >
+        <div className="md:w-7/12">
+          <div
+            className="f-mono inline-flex items-center gap-2"
+            style={{
+              fontSize: 9,
+              letterSpacing: "0.26em",
+              textTransform: "uppercase",
+              color: "var(--dim)",
+              marginBottom: 24,
+            }}
+          >
+            <span
               style={{
-                fontSize: 9,
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                color: "var(--dim)",
-                marginBottom: 24,
-              }}
-            >
-              <span
-                style={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  background: "var(--jade)",
-                }}
-              />
-              The process
-            </div>
-            <h2
-              className="font-syne"
-              style={{
-                fontSize: "clamp(36px,4vw,60px)",
-                lineHeight: 0.95,
-                fontWeight: 300,
-                color: "var(--ink)",
-              }}
-            >
-              How funding
-              <br />
-              <em
-                className="font-instrument"
-                style={{ fontStyle: "italic", color: "var(--jade)" }}
-              >
-                works
-              </em>
-            </h2>
-          </div>
-          <div className="md:w-4/12 flex flex-col justify-end">
-            <div
-              style={{
-                width: 40,
-                height: 1,
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
                 background: "var(--jade)",
-                marginBottom: 20,
               }}
             />
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.7,
-                color: "var(--dim)",
-              }}
+            The process
+          </div>
+          <h2
+            className="font-syne"
+            style={{
+              fontSize: "clamp(36px,4vw,60px)",
+              lineHeight: 0.95,
+              fontWeight: 300,
+              color: "var(--ink)",
+            }}
+          >
+            How funding
+            <br />
+            <em
+              className="font-instrument"
+              style={{ fontStyle: "italic", color: "var(--jade)" }}
             >
-              From pitch to payout, every step happens in public — reviewed,
-              voted on, and settled by the community that funds it.
-            </p>
-          </div>
-        </Parallax>
-
-        {/* Timeline Container */}
-        <div ref={containerRef} className="relative max-w-5xl mx-auto py-10">
-          {/* Static Background Track */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-[var(--rule)] transform md:-translate-x-1/2" />
-
-          {/* Animated Active Track */}
-          <motion.div
-            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-[var(--jade)] transform md:-translate-x-1/2 origin-top"
-            style={{ scaleY }}
-          />
-
-          {/* Steps */}
-          <div className="flex flex-col gap-24 relative z-10">
-            {steps.map((s, i) => (
-              <TimelineNode
-                key={s.n}
-                step={s}
-                index={i}
-                progress={scrollYProgress}
-              />
-            ))}
-          </div>
+              works
+            </em>
+          </h2>
         </div>
+        <div className="md:w-4/12 flex flex-col justify-end">
+          <div
+            style={{
+              width: 40,
+              height: 1,
+              background: "var(--jade)",
+              marginBottom: 20,
+            }}
+          />
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.7,
+              color: "var(--dim)",
+            }}
+          >
+            From pitch to payout, every step happens in public — reviewed, voted
+            on, and settled by the community that funds it.
+          </p>
+        </div>
+      </Parallax>
+
+      {/* Timeline Container */}
+      <div ref={containerRef} className="relative max-w-5xl mx-auto py-10">
+        {/* Static Background Track */}
+        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-[var(--rule)] transform md:-translate-x-1/2" />
+
+        {/* Animated Active Track */}
+        <motion.div
+          className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-[var(--jade)] transform md:-translate-x-1/2 origin-top"
+          style={{ scaleY }}
+        />
+
+        {/* Steps */}
+        <div className="flex flex-col gap-24 relative z-10">
+          {steps.map((s, i) => (
+            <TimelineNode
+              key={s.n}
+              step={s}
+              index={i}
+              progress={scrollYProgress}
+            />
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }

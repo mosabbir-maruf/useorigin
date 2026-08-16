@@ -1,5 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
-import { Github, Instagram, Linkedin, Globe } from "@/components/ui/social-icons";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Globe,
+} from "@/components/ui/social-icons";
 
 const MARQUEE_ITEMS = [
   { type: "text", val: "DECENTRALIZED TREASURY" },

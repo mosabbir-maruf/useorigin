@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Parallax } from "@/components/ui/parallax";
-import { Github, Instagram, Linkedin, Globe } from "@/components/ui/social-icons";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Globe,
+} from "@/components/ui/social-icons";
 import Footer from "./landing/Footer";
 import SEO from "@/components/SEO";
 

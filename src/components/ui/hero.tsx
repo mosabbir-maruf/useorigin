@@ -1,6 +1,11 @@
 import React, { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { Github, Instagram, Linkedin, Globe } from "@/components/ui/social-icons";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Globe,
+} from "@/components/ui/social-icons";
 
 type AvatarProps = {
   imageSrc: string;

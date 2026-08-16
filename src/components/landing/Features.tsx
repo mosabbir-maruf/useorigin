@@ -236,255 +236,255 @@ export default function Features() {
       id="features"
       gradient="radial-gradient(45% 60% at 100% 0%, rgba(255,60,0,0.12), transparent 70%)"
     >
-        <Parallax
-          offset={[50, -50]}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 lg:mb-24"
-        >
-          <div className="md:w-7/12">
-            <div
-              className="f-mono inline-flex items-center gap-2"
+      <Parallax
+        offset={[50, -50]}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 lg:mb-24"
+      >
+        <div className="md:w-7/12">
+          <div
+            className="f-mono inline-flex items-center gap-2"
+            style={{
+              fontSize: 9,
+              letterSpacing: "0.26em",
+              textTransform: "uppercase",
+              color: "var(--dim)",
+              marginBottom: 24,
+            }}
+          >
+            <span
               style={{
-                fontSize: 9,
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                color: "var(--dim)",
-                marginBottom: 24,
-              }}
-            >
-              <span
-                style={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  background: "var(--jade)",
-                }}
-              />
-              Why Origin
-            </div>
-            <h2
-              className="font-syne"
-              style={{
-                fontSize: "clamp(36px,4vw,60px)",
-                lineHeight: 0.95,
-                fontWeight: 300,
-                color: "var(--ink)",
-              }}
-            >
-              Funding, built
-              <br />
-              in the{" "}
-              <em
-                className="font-instrument"
-                style={{ fontStyle: "italic", color: "var(--jade)" }}
-              >
-                open
-              </em>
-            </h2>
-          </div>
-          <div className="md:w-4/12 flex flex-col justify-end">
-            <div
-              style={{
-                width: 40,
-                height: 1,
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
                 background: "var(--jade)",
-                marginBottom: 20,
               }}
             />
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.7,
-                color: "var(--dim)",
-              }}
-            >
-              A protocol-native alternative to grant committees — where the
-              rules are code and every decision is visible.
-            </p>
+            Why Origin
           </div>
-        </Parallax>
-
-        <div className="flex flex-col gap-4">
-          {/* Top Row: 3 columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            {/* Card 1: 100% Transparent */}
-            <Parallax
-              offset={[60, -60]}
-              className="group t-colors"
-              style={{
-                background: "var(--white)",
-                border: "1px solid var(--rule)",
-                borderRadius: 20,
-                transition: "border-color 0.3s ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "var(--rule)")
-              }
+          <h2
+            className="font-syne"
+            style={{
+              fontSize: "clamp(36px,4vw,60px)",
+              lineHeight: 0.95,
+              fontWeight: 300,
+              color: "var(--ink)",
+            }}
+          >
+            Funding, built
+            <br />
+            in the{" "}
+            <em
+              className="font-instrument"
+              style={{ fontStyle: "italic", color: "var(--jade)" }}
             >
-              <div className="flex flex-col items-center justify-center h-full p-5 sm:p-8 text-center min-h-[280px] sm:min-h-[320px]">
-                <div className="relative mb-6 flex items-center justify-center w-full flex-1">
-                  <div className="text-5xl font-syne font-bold text-[var(--ink)] z-10 transition-transform duration-500 group-hover:scale-110">
-                    100%
-                  </div>
-                  <AnimatedCircle />
-                </div>
-                <h3 className="font-syne text-xl font-medium text-[var(--ink)]">
-                  Fully Transparent
-                </h3>
-              </div>
-            </Parallax>
-
-            {/* Card 2: Secure by default */}
-            <Parallax
-              offset={[80, -80]}
-              className="group t-colors"
-              style={{
-                background: "var(--white)",
-                border: "1px solid var(--rule)",
-                borderRadius: 20,
-                transition: "border-color 0.3s ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "var(--rule)")
-              }
-            >
-              <div className="flex flex-col items-center text-center h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[320px]">
-                <div className="relative mb-6 flex items-center justify-center w-full flex-1">
-                  <AnimatedWallet />
-                </div>
-                <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
-                  Secure by default
-                </h3>
-                <p className="text-[13px] text-[var(--dim)] leading-relaxed max-w-[240px]">
-                  Connect any supported wallet to vote or propose. Origin never
-                  holds your keys.
-                </p>
-              </div>
-            </Parallax>
-
-            {/* Card 3: Milestone-gated */}
-            <Parallax
-              offset={[100, -100]}
-              className="group t-colors"
-              style={{
-                background: "var(--white)",
-                border: "1px solid var(--rule)",
-                borderRadius: 20,
-                transition: "border-color 0.3s ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "var(--rule)")
-              }
-            >
-              <div className="flex flex-col items-center text-center h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[320px]">
-                <div className="relative mb-6 flex flex-col items-center justify-center w-full flex-1 pt-4">
-                  <div className="w-full flex justify-between text-[9px] uppercase tracking-widest text-[var(--dim)] mb-4 px-4 opacity-70">
-                    <span className="flex items-center gap-1">
-                      <ArrowDown size={10} /> Funds
-                    </span>
-                    <span>Releasing</span>
-                  </div>
-                  <AnimatedMilestoneChart />
-                </div>
-                <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
-                  Milestone-gated
-                </h3>
-                <p className="text-[13px] text-[var(--dim)] leading-relaxed max-w-[240px]">
-                  Funds are released incrementally as creators hit shipped
-                  milestones, not all at once.
-                </p>
-              </div>
-            </Parallax>
-          </div>
-
-          {/* Bottom Row: 2 columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* Card 4: Real-time Treasury */}
-            <Parallax
-              offset={[70, -70]}
-              className="group t-colors"
-              style={{
-                background: "var(--white)",
-                border: "1px solid var(--rule)",
-                borderRadius: 20,
-                transition: "border-color 0.3s ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "var(--rule)")
-              }
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[300px] gap-8 items-center relative overflow-hidden">
-                <div className="flex flex-col z-10">
-                  <div className="w-10 h-10 rounded-full border border-[var(--rule)] flex items-center justify-center mb-6 text-[var(--jade)] bg-[rgba(255,60,0,0.05)]">
-                    <PieChart size={18} />
-                  </div>
-                  <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
-                    Real-time Treasury
-                  </h3>
-                  <p className="text-[13px] text-[var(--dim)] leading-relaxed pr-4">
-                    Track every dollar in real time — balances, allocations, and
-                    disbursements are broken down by category.
-                  </p>
-                </div>
-                <div className="relative h-full flex items-end justify-end opacity-60 transition-opacity duration-500 group-hover:opacity-100 mt-8 sm:mt-0">
-                  <div className="w-full h-48 border border-[var(--rule)] rounded-tl-xl border-b-0 border-r-0 relative bg-[rgba(255,255,255,0.01)] overflow-hidden pt-8 transform transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2">
-                    <div className="absolute top-3 left-4 flex gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
-                    </div>
-                    <AnimatedTreasuryChart />
-                  </div>
-                </div>
-              </div>
-            </Parallax>
-
-            {/* Card 5: Verifiable Reputation */}
-            <Parallax
-              offset={[90, -90]}
-              className="group t-colors"
-              style={{
-                background: "var(--white)",
-                border: "1px solid var(--rule)",
-                borderRadius: 20,
-                transition: "border-color 0.3s ease",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "var(--rule)")
-              }
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[300px] gap-8 items-center relative overflow-hidden">
-                <div className="flex flex-col z-10">
-                  <div className="w-10 h-10 rounded-full border border-[var(--rule)] flex items-center justify-center mb-6 text-[var(--jade)] bg-[rgba(255,60,0,0.05)]">
-                    <Users size={18} />
-                  </div>
-                  <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
-                    Verifiable Reputation
-                  </h3>
-                  <p className="text-[13px] text-[var(--dim)] leading-relaxed pr-4">
-                    Creator profiles carry a public track record of proposals,
-                    completions, and delivery rate.
-                  </p>
-                </div>
-                <AnimatedBadges />
-              </div>
-            </Parallax>
-          </div>
+              open
+            </em>
+          </h2>
         </div>
+        <div className="md:w-4/12 flex flex-col justify-end">
+          <div
+            style={{
+              width: 40,
+              height: 1,
+              background: "var(--jade)",
+              marginBottom: 20,
+            }}
+          />
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.7,
+              color: "var(--dim)",
+            }}
+          >
+            A protocol-native alternative to grant committees — where the rules
+            are code and every decision is visible.
+          </p>
+        </div>
+      </Parallax>
+
+      <div className="flex flex-col gap-4">
+        {/* Top Row: 3 columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {/* Card 1: 100% Transparent */}
+          <Parallax
+            offset={[60, -60]}
+            className="group t-colors"
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--rule)",
+              borderRadius: 20,
+              transition: "border-color 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--rule)")
+            }
+          >
+            <div className="flex flex-col items-center justify-center h-full p-5 sm:p-8 text-center min-h-[280px] sm:min-h-[320px]">
+              <div className="relative mb-6 flex items-center justify-center w-full flex-1">
+                <div className="text-5xl font-syne font-bold text-[var(--ink)] z-10 transition-transform duration-500 group-hover:scale-110">
+                  100%
+                </div>
+                <AnimatedCircle />
+              </div>
+              <h3 className="font-syne text-xl font-medium text-[var(--ink)]">
+                Fully Transparent
+              </h3>
+            </div>
+          </Parallax>
+
+          {/* Card 2: Secure by default */}
+          <Parallax
+            offset={[80, -80]}
+            className="group t-colors"
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--rule)",
+              borderRadius: 20,
+              transition: "border-color 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--rule)")
+            }
+          >
+            <div className="flex flex-col items-center text-center h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[320px]">
+              <div className="relative mb-6 flex items-center justify-center w-full flex-1">
+                <AnimatedWallet />
+              </div>
+              <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
+                Secure by default
+              </h3>
+              <p className="text-[13px] text-[var(--dim)] leading-relaxed max-w-[240px]">
+                Connect any supported wallet to vote or propose. Origin never
+                holds your keys.
+              </p>
+            </div>
+          </Parallax>
+
+          {/* Card 3: Milestone-gated */}
+          <Parallax
+            offset={[100, -100]}
+            className="group t-colors"
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--rule)",
+              borderRadius: 20,
+              transition: "border-color 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--rule)")
+            }
+          >
+            <div className="flex flex-col items-center text-center h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[320px]">
+              <div className="relative mb-6 flex flex-col items-center justify-center w-full flex-1 pt-4">
+                <div className="w-full flex justify-between text-[9px] uppercase tracking-widest text-[var(--dim)] mb-4 px-4 opacity-70">
+                  <span className="flex items-center gap-1">
+                    <ArrowDown size={10} /> Funds
+                  </span>
+                  <span>Releasing</span>
+                </div>
+                <AnimatedMilestoneChart />
+              </div>
+              <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
+                Milestone-gated
+              </h3>
+              <p className="text-[13px] text-[var(--dim)] leading-relaxed max-w-[240px]">
+                Funds are released incrementally as creators hit shipped
+                milestones, not all at once.
+              </p>
+            </div>
+          </Parallax>
+        </div>
+
+        {/* Bottom Row: 2 columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Card 4: Real-time Treasury */}
+          <Parallax
+            offset={[70, -70]}
+            className="group t-colors"
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--rule)",
+              borderRadius: 20,
+              transition: "border-color 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--rule)")
+            }
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[300px] gap-8 items-center relative overflow-hidden">
+              <div className="flex flex-col z-10">
+                <div className="w-10 h-10 rounded-full border border-[var(--rule)] flex items-center justify-center mb-6 text-[var(--jade)] bg-[rgba(255,60,0,0.05)]">
+                  <PieChart size={18} />
+                </div>
+                <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
+                  Real-time Treasury
+                </h3>
+                <p className="text-[13px] text-[var(--dim)] leading-relaxed pr-4">
+                  Track every dollar in real time — balances, allocations, and
+                  disbursements are broken down by category.
+                </p>
+              </div>
+              <div className="relative h-full flex items-end justify-end opacity-60 transition-opacity duration-500 group-hover:opacity-100 mt-8 sm:mt-0">
+                <div className="w-full h-48 border border-[var(--rule)] rounded-tl-xl border-b-0 border-r-0 relative bg-[rgba(255,255,255,0.01)] overflow-hidden pt-8 transform transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2">
+                  <div className="absolute top-3 left-4 flex gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--rule)]"></div>
+                  </div>
+                  <AnimatedTreasuryChart />
+                </div>
+              </div>
+            </div>
+          </Parallax>
+
+          {/* Card 5: Verifiable Reputation */}
+          <Parallax
+            offset={[90, -90]}
+            className="group t-colors"
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--rule)",
+              borderRadius: 20,
+              transition: "border-color 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--rule)")
+            }
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-full p-5 sm:p-8 min-h-[280px] sm:min-h-[300px] gap-8 items-center relative overflow-hidden">
+              <div className="flex flex-col z-10">
+                <div className="w-10 h-10 rounded-full border border-[var(--rule)] flex items-center justify-center mb-6 text-[var(--jade)] bg-[rgba(255,60,0,0.05)]">
+                  <Users size={18} />
+                </div>
+                <h3 className="font-syne text-lg font-medium text-[var(--ink)] mb-3">
+                  Verifiable Reputation
+                </h3>
+                <p className="text-[13px] text-[var(--dim)] leading-relaxed pr-4">
+                  Creator profiles carry a public track record of proposals,
+                  completions, and delivery rate.
+                </p>
+              </div>
+              <AnimatedBadges />
+            </div>
+          </Parallax>
+        </div>
+      </div>
     </Section>
   );
 }
