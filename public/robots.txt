@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://useorigin.pages.dev/sitemap.xml

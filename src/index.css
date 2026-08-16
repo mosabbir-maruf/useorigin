@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@300..700&family=Instrument+Serif:ital@0;1&family=Syne:wght@400..800&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-space: "Space Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
+  --font-syne: "Syne", sans-serif;
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulseBar {
+  0% {
+    filter: brightness(1);
+    transform-origin: bottom;
+  }
+  100% {
+    filter: brightness(1.5);
+    transform-origin: bottom;
+  }
+}
+
+html {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #030712;
+  color: #f5f3ee;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+:root {
+  /* Site-wide dark theme, unified with the hero section's palette */
+  --cream: #030712; /* app background — same tone as the hero */
+  --white: #0b0f19; /* elevated card surface */
+  --ink: #f5f3ee; /* near-white primary text */
+  --dim: rgba(245, 243, 238, 0.56); /* dim/secondary text */
+  --rule: rgba(245, 243, 238, 0.12); /* hairline border on dark surfaces */
+  --muted: rgba(245, 243, 238, 0.06); /* muted surface */
+  --pit: #030712; /* legacy alias, identical to --cream now that the whole site matches the hero */
+  --pit-text: #fefdf9;
+  --pit-rule: rgba(255, 255, 255, 0.1);
+  --pit-dim: rgba(255, 255, 255, 0.44);
+  --jade: #ff3c00; /* vibrant orange — hero accent */
+  --jade-fg: #ffffff;
+}
+
+.f-serif {
+  font-family: "Instrument Serif", Georgia, serif;
+}
+.f-mono {
+  font-family: "Space Grotesk", "Courier New", monospace;
+}
+
+/* Embla */
+.embla {
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+.embla:active {
+  cursor: grabbing;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* Vertical scroll marquee for live board */
+@keyframes slide-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+.live-scroll {
+  animation: slide-up 28s linear infinite;
+}
+
+/* Horizontal ticker */
+@keyframes ticker-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-run {
+  animation: ticker-x 48s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+@keyframes ticker-x-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.ticker-run-reverse {
+  animation: ticker-x-reverse 48s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Transitions */
+.t-colors {
+  transition:
+    color 0.18s,
+    background-color 0.18s,
+    border-color 0.18s,
+    opacity 0.18s;
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: var(--jade);
+  color: var(--jade-fg);
+}

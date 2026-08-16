@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Production build output
+dist/
+.html/
+
+# Vite cache and intermediates
+.vite/
+*.tsbuildinfo
+
+# Environment files
+.env*
+.env.local
+.env.*.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.bak
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# TypeScript project compilation artifacts
+*.js.map
+
+# Coverage reports
+coverage/
+
+# Buffer lock files
+*.lock
+
+# App root and config files (if needed to be excluded)
+# dist/
+# vite.config.ts
