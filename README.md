@@ -107,7 +107,7 @@ origin/
 | `npm run build`     | Build production bundle to `dist/`                                   |
 | `npm run preview`   | Preview production build locally                                     |
 | `npm run typecheck` | Run TypeScript type checking                                         |
-| `npm run format`    | Format code with Prettier (`prettier --write .`)                      |
+| `npm run format`    | Format code with Prettier (`prettier --write .`)                     |
 
 ---
 
